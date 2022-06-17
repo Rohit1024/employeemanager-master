@@ -32,7 +32,7 @@ public class ExceptionControllerAdvice
 	LOGGER.error(exception.getMessage(), exception);
 	ErrorInfo errorInfo = new ErrorInfo();
 	errorInfo.setErrorCode(HttpStatus.BAD_REQUEST.value());
-	errorInfo.setErrorMessage(environment.getProperty(exception.getMessage()));
+	errorInfo.setErrorMessage(exception.getMessage());
 	return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
     }
 
@@ -43,7 +43,7 @@ public class ExceptionControllerAdvice
 	LOGGER.error(exception.getMessage(), exception);
 	ErrorInfo errorInfo = new ErrorInfo();
 	errorInfo.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-	errorInfo.setErrorMessage(environment.getProperty("General.EXCEPTION_MESSAGE"));
+	errorInfo.setErrorMessage(exception.getMessage());
 	return new ResponseEntity<>(errorInfo,
 				    HttpStatus.INTERNAL_SERVER_ERROR);
     }
