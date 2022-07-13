@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.api.employeemanager.dto.EmployeeDTO;
-//import tech.getarrays.employeemanager.model.Employee;
 import com.api.employeemanager.service.EmployeeService;
 
 import javax.validation.Valid;
@@ -17,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 @Validated
-@CrossOrigin
+@CrossOrigin(maxAge = 3600)
 public class EmployeeController {
     private final EmployeeService employeeService;
     @Autowired
@@ -27,6 +26,11 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @GetMapping("/")
+    public ResponseEntity<?> hello(){
+        return ResponseEntity.ok("Hello from CRUD application");
+    }
+    
     @GetMapping("/all")
     public ResponseEntity<List<EmployeeDTO>> getAllEmployees () throws CustomException {
         List<EmployeeDTO> employeeDTOList = employeeService.findAllEmployees();
