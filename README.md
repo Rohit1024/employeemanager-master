@@ -10,5 +10,5 @@ Methods | Urls | Actions |
 | `PUT` | _/employee/update/{id}_ | update Employee with id |
 | `DELETE` | _/employee/delete/{id}_ | delete Employee |
 
-###note : provide updated json input with: 
+### Note : provide updated json input with: 
 _/employee/update/{id}_
